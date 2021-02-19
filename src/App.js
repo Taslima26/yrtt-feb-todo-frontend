@@ -35,6 +35,12 @@ function App() {
       date: "2021-02-19",
       id: "004",
     },
+    {
+      text: "Complete TR 's react tutorial",
+      completed: false,
+      date: "2021-01-02",
+      id: "005",
+    },
   ]);
   const incompleteTask = tasks.filter((task) => !task.completed);
   const completeTask = tasks.filter((task) => task.completed);
@@ -48,15 +54,29 @@ function App() {
 
   */
   return (
-    <div className="App">
-      <div className="body">
-        <header className="header">
-          <h1 className="heading">To Do!</h1>
-          <AddTaskItem />
-          <p className="outstanding-tasks">You have 3 tasks to complete</p>
-        </header>
-        <TaskItem completeTask={completeTask} incompleteTask={incompleteTask} />
-      </div>
+    <div>
+      <header className="header">
+        <h1 className="heading">To Do!</h1>
+        <AddTaskItem />
+        <p className="outstanding-tasks">You have 3 tasks to complete</p>
+      </header>
+      <main className="all-tasks">
+        <section className="incomplete-tasks">
+          <h2 className="heading">Tasks to do:</h2>
+          <ul className="task-list">
+            <TaskItem complete={false} />
+            <TaskItem complete={false} />
+            <TaskItem complete={false} />
+          </ul>
+        </section>
+        <section className="complete-tasks">
+          <h2 className="heading">Complete tasks:</h2>
+          <ul className="task-list">
+            <TaskItem complete={true} />
+            <TaskItem complete={true} />
+          </ul>
+        </section>
+      </main>
     </div>
   );
 }
