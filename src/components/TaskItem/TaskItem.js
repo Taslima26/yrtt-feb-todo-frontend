@@ -1,11 +1,11 @@
 import React from "react";
 import "./TaskItem.css";
 
-const TaskItem = (props) => {
+const TaskItem = ({ complete, text }) => {
   return (
-    <li className={`task ${props.complete ? "task--complete" : ""}`}>
-      <p className="task__text">This is a task that needs to be done</p>
-      {props.complete === false && <button className="button">Complete</button>}
+    <li className={`task ${complete ? "task--complete" : ""}`}>
+      <p className="task__text">{text}</p>
+      {complete === false && <button className="button">Complete</button>}
       <button className="button">Delete</button>
     </li>
   );

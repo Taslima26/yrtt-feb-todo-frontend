@@ -1,7 +1,8 @@
 import "./App.css";
 import { useState } from "react";
-import AddTaskItem from "./components/AddTaskItem/AddTaskItem";
 import TaskItem from "./components/TaskItem/TaskItem";
+import Header from "./Header/Header";
+import TaskList from "./components/TaskList/TaskList";
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -44,38 +45,13 @@ function App() {
   ]);
   const incompleteTask = tasks.filter((task) => !task.completed);
   const completeTask = tasks.filter((task) => task.completed);
-  console.log(completeTask);
-  console.log(incompleteTask);
-  /*[
-    {text:"Do Sainsbury shop",completed:false,date:"2021-02-22"},
-    {text:"Make something nice to eat,campleted:false,date:"2021-02-22"},
-    {text:"Dry the washing",completed:false,date:"2021-02-19"}
-  ]
 
-  */
   return (
     <div>
-      <header className="header">
-        <h1 className="heading">To Do!</h1>
-        <AddTaskItem />
-        <p className="outstanding-tasks">You have 3 tasks to complete</p>
-      </header>
+      <Header taskCount={incompleteTask.length} />
       <main className="all-tasks">
-        <section className="incomplete-tasks">
-          <h2 className="heading">Tasks to do:</h2>
-          <ul className="task-list">
-            <TaskItem complete={false} />
-            <TaskItem complete={false} />
-            <TaskItem complete={false} />
-          </ul>
-        </section>
-        <section className="complete-tasks">
-          <h2 className="heading">Complete tasks:</h2>
-          <ul className="task-list">
-            <TaskItem complete={true} />
-            <TaskItem complete={true} />
-          </ul>
-        </section>
+        <TaskList tasks={incompleteTask} status="incomplete" />
+        <TaskList tasks={completeTask} status="complete" />
       </main>
     </div>
   );
