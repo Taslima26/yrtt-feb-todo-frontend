@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import TaskItem from "../TaskItem/TaskItem";
+import React, {useState} from 'react';
+import TaskItem from '../TaskItem/TaskItem';
 
-const TaskList = ({ tasks, status }) => {
+const TaskList = ({tasks, status, deleteTask, id}) => {
   return (
     <div>
       <section className={`${status}-tasks`}>
@@ -12,6 +12,8 @@ const TaskList = ({ tasks, status }) => {
               text={task.text}
               key={task.id}
               complete={task.completed}
+              deleteTask={deleteTask}
+              id={task.id}
             />
           ))}
         </ul>
